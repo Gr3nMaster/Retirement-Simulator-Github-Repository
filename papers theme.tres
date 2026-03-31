@@ -1,0 +1,23 @@
+[gd_resource type="Theme" format=3 uid="uid://rf01j3cngcad"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l6cm7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ekxnf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqqt6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wu84c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ln24"]
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0, 0, 0, 0.5019608)
+Button/colors/font_hover_color = Color(0.5529412, 0.5529412, 0.5529412, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_l6cm7")
+Button/styles/focus = SubResource("StyleBoxEmpty_ekxnf")
+Button/styles/hover = SubResource("StyleBoxEmpty_bqqt6")
+Button/styles/normal = SubResource("StyleBoxEmpty_wu84c")
+Button/styles/pressed = SubResource("StyleBoxEmpty_8ln24")
