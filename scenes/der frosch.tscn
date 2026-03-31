@@ -1,0 +1,179 @@
+[gd_scene format=3 uid="uid://co1qdc6dwmnu0"]
+
+[ext_resource type="Script" uid="uid://b6k0mu0xvmcbr" path="res://scripts/der frosch.gd" id="1_pfjyr"]
+[ext_resource type="Shader" uid="uid://b45s150uyw487" path="res://scripts/hurty gurdy.gdshader" id="2_froop"]
+[ext_resource type="Texture2D" uid="uid://dc8kv0dfsdep" path="res://sprites/freug tileset.png" id="2_pfjyr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2vvv1"]
+resource_local_to_scene = true
+shader = ExtResource("2_froop")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_froop"]
+atlas = ExtResource("2_pfjyr")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vvv1"]
+atlas = ExtResource("2_pfjyr")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxinr"]
+atlas = ExtResource("2_pfjyr")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfjyr"]
+atlas = ExtResource("2_pfjyr")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tscvx"]
+atlas = ExtResource("2_pfjyr")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auwes"]
+atlas = ExtResource("2_pfjyr")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3p8sk"]
+atlas = ExtResource("2_pfjyr")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2vvv1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_froop")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vvv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxinr")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfjyr")
+}],
+"loop": true,
+"name": &"k fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tscvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auwes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3p8sk")
+}],
+"loop": false,
+"name": &"land",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_2vvv1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_froop"]
+resource_name = "hurt"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2vvv1"]
+_data = {
+&"RESET": SubResource("Animation_2vvv1"),
+&"hurt": SubResource("Animation_froop")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umrl8"]
+size = Vector2(32, 103)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pfjyr"]
+size = Vector2(52, 63)
+
+[node name="der frosch" type="CharacterBody2D" unique_id=77811059]
+process_mode = 1
+z_index = 1
+collision_layer = 48
+collision_mask = 9
+collision_priority = 10.0
+safe_margin = 0.001
+script = ExtResource("1_pfjyr")
+
+[node name="Freug" type="AnimatedSprite2D" parent="." unique_id=1865636112]
+material = SubResource("ShaderMaterial_2vvv1")
+position = Vector2(0, -64)
+sprite_frames = SubResource("SpriteFrames_2vvv1")
+animation = &"k fly"
+autoplay = "idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Freug" unique_id=832627410]
+libraries/ = SubResource("AnimationLibrary_2vvv1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=182924731]
+position = Vector2(0, -51.5)
+shape = SubResource("RectangleShape2D_umrl8")
+
+[node name="Wall Raycast L" type="RayCast2D" parent="." unique_id=1750748322]
+position = Vector2(-16, -16)
+target_position = Vector2(-16, 0)
+collision_mask = 33
+
+[node name="Wall Raycast R" type="RayCast2D" parent="." unique_id=1259437242]
+position = Vector2(16, -16)
+target_position = Vector2(16, 0)
+collision_mask = 33
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=653986489]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1968689959]
+position = Vector2(0, -31.5)
+shape = SubResource("RectangleShape2D_pfjyr")
+
+[node name="Invincibility" type="Timer" parent="." unique_id=90201241]
+wait_time = 0.3
+one_shot = true
+
+[node name="Jump Timer" type="Timer" parent="." unique_id=1327947620]
+wait_time = 0.9
+one_shot = true
+
+[connection signal="animation_finished" from="Freug" to="." method="_on_freug_animation_finished"]
+[connection signal="timeout" from="Jump Timer" to="." method="_on_jump_timer_timeout"]

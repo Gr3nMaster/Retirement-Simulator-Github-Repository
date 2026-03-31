@@ -1,0 +1,135 @@
+[gd_scene format=4 uid="uid://c2mgfwn70ssld"]
+
+[ext_resource type="Script" uid="uid://crjau3i5ovwj3" path="res://scripts/level.gd" id="1_f1p82"]
+[ext_resource type="Texture2D" uid="uid://b3j60vpk3pmdu" path="res://sprites/facility background.png" id="2_h8gqd"]
+[ext_resource type="Texture2D" uid="uid://d3rmj6v1t7w6u" path="res://sprites/facility tileset.png" id="2_uilpc"]
+[ext_resource type="PackedScene" uid="uid://bpv7efe2mbeaa" path="res://scenes/player.tscn" id="4_6o0q2"]
+[ext_resource type="Texture2D" uid="uid://begf0sg14abol" path="res://sprites/dead hearts.png" id="6_djslr"]
+[ext_resource type="Texture2D" uid="uid://bky7s48mg6a6t" path="res://sprites/healthy hearts.png" id="7_yxukd"]
+[ext_resource type="Script" uid="uid://can31xqccjvnt" path="res://scripts/killzone.gd" id="8_w0d3i"]
+[ext_resource type="AudioStream" uid="uid://dacvktuufk4xn" path="res://sound/Fight Begin.mp3" id="9_q04jw"]
+[ext_resource type="PackedScene" uid="uid://cc28bw23ym8m8" path="res://scenes/enemy_1.tscn" id="10_ursdl"]
+[ext_resource type="PackedScene" uid="uid://peql2t47etg6" path="res://scenes/pause_menu.tscn" id="11_q0am8"]
+[ext_resource type="PackedScene" uid="uid://dr1vr3bupm46j" path="res://scenes/smol_bobot_guy.tscn" id="11_uilpc"]
+[ext_resource type="AudioStream" uid="uid://bsjom7l7ad0xb" path="res://sound/Robot Roughhousing.mp3" id="12_6o0q2"]
+[ext_resource type="PackedScene" uid="uid://cqmu5wtcvql5x" path="res://scenes/ufo_guffo.tscn" id="12_h8gqd"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h8gqd"]
+texture = ExtResource("2_uilpc")
+texture_region_size = Vector2i(128, 128)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_paw1w"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_h8gqd")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcd3b"]
+size = Vector2(1024, 256)
+
+[node name="level 5" type="Node2D" unique_id=1055461785]
+process_mode = 3
+script = ExtResource("1_f1p82")
+next_scene = "res://scenes/level 5/phase 2.tscn"
+
+[node name="FacilityBackground" type="Sprite2D" parent="." unique_id=2123586152]
+position = Vector2(512, 288)
+texture = ExtResource("2_h8gqd")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=948127066]
+tile_map_data = PackedByteArray("AAAIAP7/AAABAAIAAAAIAP//AAABAAIAAAAIAAAAAAABAAIAAAAIAAEAAAABAAIAAAD///7/AAABAAIAAAD/////AAABAAIAAAD//wAAAAABAAIAAAD//wEAAAABAAIAAAAAAAQAAAAAAAIAAAAAAAMAAAAAAAIAAAABAAMAAAACAAIAAAACAAMAAAAAAAEAAAADAAMAAAABAAEAAAAEAAMAAAABAAEAAAAFAAMAAAACAAEAAAAGAAMAAAAAAAIAAAAHAAMAAAACAAIAAAAHAAQAAAACAAIAAAAGAAQAAAAAAAIAAAAFAAQAAAACAAIAAAAEAAQAAAABAAIAAAADAAQAAAABAAIAAAACAAQAAAAAAAIAAAABAAQAAAACAAIAAAABAAIAAAACAAEAAAAAAAIAAAAAAAEAAAAHAAIAAAACAAEAAAAGAAIAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_paw1w")
+
+[node name="Player" parent="." unique_id=849064682 instance=ExtResource("4_6o0q2")]
+position = Vector2(512, 384)
+
+[node name="enemies" type="Node2D" parent="." unique_id=1163315495]
+
+[node name="enemy 1" parent="enemies" unique_id=77811059 instance=ExtResource("10_ursdl")]
+position = Vector2(384, 384)
+direction = -1.0
+
+[node name="enemy 3" parent="enemies" unique_id=1527462544 instance=ExtResource("10_ursdl")]
+position = Vector2(64, 256)
+
+[node name="enemy 2" parent="enemies" unique_id=126597808 instance=ExtResource("10_ursdl")]
+position = Vector2(640, 384)
+
+[node name="enemy 4" parent="enemies" unique_id=1753598656 instance=ExtResource("10_ursdl")]
+position = Vector2(960, 256)
+direction = -1.0
+
+[node name="smol bobot guy" parent="enemies" unique_id=1397529804 instance=ExtResource("11_uilpc")]
+position = Vector2(832, 256)
+
+[node name="ufo guffo" parent="enemies" unique_id=397901373 instance=ExtResource("12_h8gqd")]
+position = Vector2(192, 256)
+direction = 1.0
+
+[node name="Health" type="TextureProgressBar" parent="." unique_id=659421190]
+offset_left = 384.0
+offset_right = 640.0
+offset_bottom = 64.0
+max_value = 4.0
+value = 4.0
+fill_mode = 1
+texture_under = ExtResource("6_djslr")
+texture_progress = ExtResource("7_yxukd")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=730957499]
+collision_layer = 10
+collision_mask = 26
+script = ExtResource("8_w0d3i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2113545436]
+position = Vector2(512, 768)
+shape = SubResource("RectangleShape2D_qcd3b")
+
+[node name="Fight Begin" type="AudioStreamPlayer2D" parent="." unique_id=1468157211]
+process_mode = 1
+stream = ExtResource("9_q04jw")
+volume_db = 10.0
+autoplay = true
+bus = &"Music"
+
+[node name="Fight Music" type="AudioStreamPlayer2D" parent="." unique_id=806477701]
+process_mode = 1
+stream = ExtResource("12_6o0q2")
+volume_db = 10.0
+bus = &"Music"
+
+[node name="Timer" type="Timer" parent="." unique_id=2017615963]
+process_mode = 1
+
+[node name="Pause Menu" parent="." unique_id=372689476 instance=ExtResource("11_q0am8")]
+offset_left = 512.0
+offset_top = 288.0
+offset_right = 512.0
+offset_bottom = 288.0
+
+[connection signal="start_pls" from="Player" to="." method="on_start"]
+[connection signal="oh_no_i_died_bleh" from="enemies/enemy 1" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/enemy 3" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/enemy 2" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/enemy 4" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/smol bobot guy" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/ufo guffo" to="." method="oh_no_i_died_bleh"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_fight_win_finished"]

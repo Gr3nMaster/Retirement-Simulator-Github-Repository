@@ -1,0 +1,128 @@
+[gd_scene format=4 uid="uid://gnootru48i5m"]
+
+[ext_resource type="Script" uid="uid://crjau3i5ovwj3" path="res://scripts/level.gd" id="1_d55ka"]
+[ext_resource type="Texture2D" uid="uid://d3rmj6v1t7w6u" path="res://sprites/facility tileset.png" id="2_d55ka"]
+[ext_resource type="PackedScene" uid="uid://bpv7efe2mbeaa" path="res://scenes/player.tscn" id="4_v06td"]
+[ext_resource type="PackedScene" uid="uid://co1qdc6dwmnu0" path="res://scenes/der frosch.tscn" id="5_su6mk"]
+[ext_resource type="PackedScene" uid="uid://dr1vr3bupm46j" path="res://scenes/smol_bobot_guy.tscn" id="6_8vfm2"]
+[ext_resource type="Texture2D" uid="uid://begf0sg14abol" path="res://sprites/dead hearts.png" id="7_gol71"]
+[ext_resource type="Texture2D" uid="uid://bky7s48mg6a6t" path="res://sprites/healthy hearts.png" id="8_osd45"]
+[ext_resource type="Script" uid="uid://can31xqccjvnt" path="res://scripts/killzone.gd" id="9_k2iax"]
+[ext_resource type="AudioStream" uid="uid://bsjom7l7ad0xb" path="res://sound/Robot Roughhousing.mp3" id="11_7ibne"]
+[ext_resource type="PackedScene" uid="uid://peql2t47etg6" path="res://scenes/pause_menu.tscn" id="11_nutr6"]
+[ext_resource type="PackedScene" uid="uid://cc28bw23ym8m8" path="res://scenes/enemy_1.tscn" id="12_7ibne"]
+[ext_resource type="Texture2D" uid="uid://b3j60vpk3pmdu" path="res://sprites/facility background.png" id="12_gudw5"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7ibne"]
+texture = ExtResource("2_d55ka")
+texture_region_size = Vector2i(128, 128)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_k3tfv"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_7ibne")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcd3b"]
+size = Vector2(1024, 256)
+
+[node name="level 5" type="Node2D" unique_id=1055461785]
+process_mode = 3
+script = ExtResource("1_d55ka")
+next_scene = "res://scenes/level 5/phase 4.tscn"
+
+[node name="FacilityBackground" type="Sprite2D" parent="." unique_id=1166389774]
+position = Vector2(512, 288)
+texture = ExtResource("12_gudw5")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1906790992]
+tile_map_data = PackedByteArray("AAD//wAAAAABAAIAAAD//wIAAAABAAIAAAAIAAAAAAABAAIAAAAIAAIAAAABAAIAAAAHAAQAAAACAAIAAAAGAAQAAAAAAAIAAAAFAAQAAAACAAEAAAAEAAQAAAABAAEAAAADAAQAAAABAAEAAAACAAQAAAAAAAEAAAABAAQAAAACAAIAAAAAAAQAAAAAAAIAAAAIAP//AAABAAIAAAD/////AAABAAIAAAAIAP7/AAABAAIAAAD///7/AAABAAIAAAAAAAEAAAABAAAAAAAHAAEAAAAAAAAAAAAEAAEAAAABAAAAAAADAAEAAAAAAAAAAAAAAAMAAAAAAAEAAAABAAMAAAACAAEAAAAHAAMAAAACAAEAAAAGAAMAAAAAAAEAAAAIAAEAAAABAAIAAAD//wEAAAABAAIAAAA=")
+tile_set = SubResource("TileSet_k3tfv")
+
+[node name="Player" parent="." unique_id=849064682 instance=ExtResource("4_v06td")]
+position = Vector2(512, 512)
+
+[node name="enemies" type="Node2D" parent="." unique_id=1163315495]
+
+[node name="der frosch" parent="enemies" unique_id=77811059 instance=ExtResource("5_su6mk")]
+position = Vector2(64, 128)
+direction = 1.0
+
+[node name="der frosch2" parent="enemies" unique_id=1685654651 instance=ExtResource("5_su6mk")]
+position = Vector2(960, 128)
+direction = -1.0
+
+[node name="smol bobot guy2" parent="enemies" unique_id=2000360115 instance=ExtResource("6_8vfm2")]
+position = Vector2(384, 128)
+direction = 1.0
+
+[node name="enemy 1" parent="enemies" unique_id=1591374763 instance=ExtResource("12_7ibne")]
+position = Vector2(128, 384)
+direction = -1.0
+
+[node name="enemy 2" parent="enemies" unique_id=44478400 instance=ExtResource("12_7ibne")]
+position = Vector2(960, 384)
+
+[node name="Health" type="TextureProgressBar" parent="." unique_id=659421190]
+offset_left = 384.0
+offset_right = 640.0
+offset_bottom = 64.0
+max_value = 4.0
+value = 4.0
+fill_mode = 1
+texture_under = ExtResource("7_gol71")
+texture_progress = ExtResource("8_osd45")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=730957499]
+collision_layer = 10
+collision_mask = 26
+script = ExtResource("9_k2iax")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2113545436]
+position = Vector2(512, 768)
+shape = SubResource("RectangleShape2D_qcd3b")
+
+[node name="Fight Music" type="AudioStreamPlayer2D" parent="." unique_id=806477701]
+process_mode = 1
+stream = ExtResource("11_7ibne")
+volume_db = 10.0
+bus = &"Music"
+
+[node name="Timer" type="Timer" parent="." unique_id=271914990]
+process_mode = 1
+
+[node name="Pause Menu" parent="." unique_id=372689476 instance=ExtResource("11_nutr6")]
+offset_left = 512.0
+offset_top = 288.0
+offset_right = 512.0
+offset_bottom = 288.0
+
+[connection signal="start_pls" from="Player" to="." method="on_start"]
+[connection signal="oh_no_i_died_bleh" from="enemies/der frosch" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/der frosch2" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/smol bobot guy2" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/enemy 1" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/enemy 2" to="." method="oh_no_i_died_bleh"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_fight_win_finished"]

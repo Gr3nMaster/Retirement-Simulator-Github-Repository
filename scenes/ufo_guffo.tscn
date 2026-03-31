@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://cqmu5wtcvql5x"]
+
+[ext_resource type="Script" uid="uid://dmqkupa1ftduc" path="res://scripts/ufo_guffo.gd" id="1_aousa"]
+[ext_resource type="Texture2D" uid="uid://bovbierr2x2mb" path="res://sprites/ugly frickin oitch Spritesheet.png" id="2_aousa"]
+[ext_resource type="Shader" uid="uid://b45s150uyw487" path="res://scripts/hurty gurdy.gdshader" id="2_efrfo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aousa"]
+size = Vector2(32, 63)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5qclq"]
+resource_local_to_scene = true
+shader = ExtResource("2_efrfo")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aousa"]
+atlas = ExtResource("2_aousa")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnun5"]
+atlas = ExtResource("2_aousa")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_efrfo"]
+atlas = ExtResource("2_aousa")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qclq"]
+atlas = ExtResource("2_aousa")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcbh3"]
+atlas = ExtResource("2_aousa")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f5hr"]
+atlas = ExtResource("2_aousa")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_auvy4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aousa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnun5")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_efrfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qclq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcbh3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3f5hr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_5qclq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_efrfo"]
+resource_name = "hurt"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5qclq"]
+_data = {
+&"RESET": SubResource("Animation_5qclq"),
+&"hurt": SubResource("Animation_efrfo")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nb2ap"]
+size = Vector2(31, 30)
+
+[node name="ufo guffo" type="CharacterBody2D" unique_id=1397529804]
+process_mode = 1
+z_index = 1
+collision_layer = 16
+collision_mask = 17
+collision_priority = 10.0
+script = ExtResource("1_aousa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=461119265]
+position = Vector2(0, -31.5)
+shape = SubResource("RectangleShape2D_aousa")
+
+[node name="UfoGuyana" type="AnimatedSprite2D" parent="." unique_id=1969240645]
+material = SubResource("ShaderMaterial_5qclq")
+position = Vector2(0, -64)
+sprite_frames = SubResource("SpriteFrames_auvy4")
+animation = &"hit"
+autoplay = "idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UfoGuyana" unique_id=1840681167]
+libraries/ = SubResource("AnimationLibrary_5qclq")
+
+[node name="Wall Raycast L" type="RayCast2D" parent="." unique_id=1568713398]
+position = Vector2(-16, -48)
+target_position = Vector2(-6, 0)
+collision_mask = 41
+
+[node name="Wall Raycast R" type="RayCast2D" parent="." unique_id=1192846717]
+position = Vector2(16, -48)
+target_position = Vector2(6, 0)
+collision_mask = 41
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1637890296]
+collision_layer = 12
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=297334146]
+position = Vector2(0, -48)
+shape = SubResource("RectangleShape2D_nb2ap")
+
+[node name="Invincibility" type="Timer" parent="." unique_id=1428391584]
+wait_time = 0.3
+one_shot = true

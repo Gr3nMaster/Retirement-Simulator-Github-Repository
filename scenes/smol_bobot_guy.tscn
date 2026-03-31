@@ -1,0 +1,152 @@
+[gd_scene format=3 uid="uid://dr1vr3bupm46j"]
+
+[ext_resource type="Script" uid="uid://4iatw3po43e" path="res://scripts/evil_dog.gd" id="1_das4l"]
+[ext_resource type="Texture2D" uid="uid://dwp4njbr0o44l" path="res://sprites/bad dog Spritesheet.png" id="2_das4l"]
+[ext_resource type="Shader" uid="uid://b45s150uyw487" path="res://scripts/hurty gurdy.gdshader" id="2_s1315"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nb2ap"]
+size = Vector2(32, 30)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ohr8a"]
+resource_local_to_scene = true
+shader = ExtResource("2_s1315")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_das4l"]
+atlas = ExtResource("2_das4l")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0baxm"]
+atlas = ExtResource("2_das4l")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1315"]
+atlas = ExtResource("2_das4l")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohr8a"]
+atlas = ExtResource("2_das4l")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84qdk"]
+atlas = ExtResource("2_das4l")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5j2kf"]
+atlas = ExtResource("2_das4l")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nb2ap"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_das4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0baxm")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1315")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohr8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84qdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5j2kf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_ohr8a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_s1315"]
+resource_name = "hurt"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ohr8a"]
+_data = {
+&"RESET": SubResource("Animation_ohr8a"),
+&"hurt": SubResource("Animation_s1315")
+}
+
+[node name="smol bobot guy" type="CharacterBody2D" unique_id=1397529804]
+process_mode = 1
+z_index = 1
+collision_layer = 8
+collision_mask = 9
+collision_priority = 10.0
+script = ExtResource("1_das4l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=461119265]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_nb2ap")
+
+[node name="BadDog" type="AnimatedSprite2D" parent="." unique_id=1696207981]
+material = SubResource("ShaderMaterial_ohr8a")
+position = Vector2(0, -64)
+sprite_frames = SubResource("SpriteFrames_nb2ap")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.1497186
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BadDog" unique_id=37046596]
+libraries/ = SubResource("AnimationLibrary_ohr8a")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1637890296]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=297334146]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_nb2ap")
+
+[node name="Invincibility" type="Timer" parent="." unique_id=1428391584]
+wait_time = 0.3
+one_shot = true
+
+[node name="Wall Raycast L" type="RayCast2D" parent="." unique_id=1568713398]
+position = Vector2(-16, -16)
+target_position = Vector2(-6, 0)
+collision_mask = 41
+
+[node name="Wall Raycast R" type="RayCast2D" parent="." unique_id=1192846717]
+position = Vector2(16, -16)
+target_position = Vector2(6, 0)
+collision_mask = 41

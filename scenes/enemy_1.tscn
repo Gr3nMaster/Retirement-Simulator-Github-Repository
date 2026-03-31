@@ -1,0 +1,185 @@
+[gd_scene format=3 uid="uid://cc28bw23ym8m8"]
+
+[ext_resource type="Script" uid="uid://b3o7dqlrayy7w" path="res://scripts/enemy_1.gd" id="1_a1412"]
+[ext_resource type="Texture2D" uid="uid://ca7mov3035ena" path="res://sprites/First Robot Spritesheet.png" id="2_a1412"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umrl8"]
+size = Vector2(32, 63)
+
+[sub_resource type="Shader" id="Shader_a1412"]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_color : source_color;
+uniform float flash_value : hint_range(0.0, 1.0, 0.1);
+
+void fragment() {
+	vec4 texture_color = texture(TEXTURE, UV);
+	COLOR = mix(texture_color, flash_color, flash_value);
+	COLOR.a = texture_color.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dq62l"]
+resource_local_to_scene = true
+shader = SubResource("Shader_a1412")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1412"]
+atlas = ExtResource("2_a1412")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nrqq"]
+atlas = ExtResource("2_a1412")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejytf"]
+atlas = ExtResource("2_a1412")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dq62l"]
+atlas = ExtResource("2_a1412")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3026"]
+atlas = ExtResource("2_a1412")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l21ug"]
+atlas = ExtResource("2_a1412")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tcmaw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1412")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nrqq")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejytf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dq62l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3026")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l21ug")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="Animation" id="Animation_dq62l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RobotFirstRender:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ejytf"]
+resource_name = "hurt"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RobotFirstRender:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dq62l"]
+_data = {
+&"RESET": SubResource("Animation_dq62l"),
+&"hurt": SubResource("Animation_ejytf")
+}
+
+[node name="enemy 1" type="CharacterBody2D" unique_id=77811059]
+process_mode = 1
+z_index = 1
+collision_layer = 24
+collision_mask = 9
+collision_priority = 10.0
+safe_margin = 0.001
+script = ExtResource("1_a1412")
+direction = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=182924731]
+position = Vector2(0, -31.5)
+shape = SubResource("RectangleShape2D_umrl8")
+
+[node name="RobotFirstRender" type="AnimatedSprite2D" parent="." unique_id=1099136985]
+material = SubResource("ShaderMaterial_dq62l")
+position = Vector2(0, -64)
+sprite_frames = SubResource("SpriteFrames_tcmaw")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RobotFirstRender" unique_id=1911476162]
+root_node = NodePath("../../Invincibility")
+libraries/ = SubResource("AnimationLibrary_dq62l")
+
+[node name="Cliff Raycast L" type="RayCast2D" parent="." unique_id=481423420]
+position = Vector2(-19, 0)
+hit_from_inside = true
+
+[node name="Cliff Raycast R" type="RayCast2D" parent="." unique_id=1956134235]
+position = Vector2(19, 0)
+hit_from_inside = true
+
+[node name="Wall Raycast L" type="RayCast2D" parent="." unique_id=1750748322]
+position = Vector2(-16, -16)
+target_position = Vector2(-4, 0)
+collision_mask = 41
+
+[node name="Wall Raycast R" type="RayCast2D" parent="." unique_id=1259437242]
+position = Vector2(16, -16)
+target_position = Vector2(4, 0)
+collision_mask = 41
+
+[node name="Wall Raycast L2" type="RayCast2D" parent="." unique_id=91778739]
+position = Vector2(-16, -48)
+target_position = Vector2(-4, 0)
+collision_mask = 41
+
+[node name="Wall Raycast R2" type="RayCast2D" parent="." unique_id=394396660]
+position = Vector2(16, -48)
+target_position = Vector2(4, 0)
+collision_mask = 41
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=653986489]
+visible = false
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1968689959]
+position = Vector2(0, -31.5)
+shape = SubResource("RectangleShape2D_umrl8")
+
+[node name="Invincibility" type="Timer" parent="." unique_id=90201241]
+wait_time = 0.3
+one_shot = true

@@ -1,0 +1,186 @@
+[gd_scene format=4 uid="uid://b8n3t1pwkbkoe"]
+
+[ext_resource type="Script" uid="uid://crjau3i5ovwj3" path="res://scripts/level.gd" id="1_xejdk"]
+[ext_resource type="Texture2D" uid="uid://m70yjpscvmc2" path="res://sprites/barn tileset.png" id="2_xejdk"]
+[ext_resource type="PackedScene" uid="uid://bpv7efe2mbeaa" path="res://scenes/player.tscn" id="3_rllje"]
+[ext_resource type="PackedScene" uid="uid://cc28bw23ym8m8" path="res://scenes/enemy_1.tscn" id="4_qimna"]
+[ext_resource type="PackedScene" uid="uid://dr1vr3bupm46j" path="res://scenes/smol_bobot_guy.tscn" id="5_drctm"]
+[ext_resource type="Texture2D" uid="uid://begf0sg14abol" path="res://sprites/dead hearts.png" id="6_7dsla"]
+[ext_resource type="Texture2D" uid="uid://bky7s48mg6a6t" path="res://sprites/healthy hearts.png" id="7_qm4g5"]
+[ext_resource type="Script" uid="uid://can31xqccjvnt" path="res://scripts/killzone.gd" id="8_vieoq"]
+[ext_resource type="AudioStream" uid="uid://chru07ureyu7h" path="res://sound/Bluegrass Battle.mp3" id="9_xejdk"]
+[ext_resource type="AudioStream" uid="uid://cdl6t6lj2ix5m" path="res://sound/Fight Win.mp3" id="11_634q4"]
+[ext_resource type="PackedScene" uid="uid://peql2t47etg6" path="res://scenes/pause_menu.tscn" id="11_xejdk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_byvl1"]
+texture = ExtResource("2_xejdk")
+texture_region_size = Vector2i(64, 64)
+2:2/0 = 0
+3:2/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+7:3/0 = 0
+7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+6:3/0 = 0
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:5/0 = 0
+0:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:6/0 = 0
+0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:6/0 = 0
+1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:5/0 = 0
+1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:7/0 = 0
+0:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:7/0 = 0
+1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:7/0 = 0
+2:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:6/0 = 0
+2:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:6/0 = 0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:6/0 = 0
+5:6/0 = 0
+5:7/0 = 0
+4:7/0 = 0
+3:7/0 = 0
+3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+5:0/0 = 0
+4:0/0 = 0
+3:0/0 = 0
+2:0/0 = 0
+1:0/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+1:2/0 = 0
+4:4/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+5:4/0 = 0
+6:6/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+7:6/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_rllje"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_byvl1")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcd3b"]
+size = Vector2(1024, 256)
+
+[node name="level 2 but real" type="Node2D" unique_id=1055461785]
+process_mode = 3
+script = ExtResource("1_xejdk")
+next_scene = "res://scenes/main_menu.tscn"
+winnings = 200000
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1616006945]
+tile_map_data = PackedByteArray("AAD//wgAAAAAAAUAAAD//wcAAAAAAAUAAAD//wYAAAAAAAUAAAD//wUAAAAAAAUAAAD//wQAAAAAAAUAAAD//wMAAAAAAAUAAAD//wIAAAAAAAUAAAD//wEAAAAAAAUAAAD//wAAAAAAAAUAAAAAAP//AAAAAAUAAAABAP//AAAAAAUAAAACAP//AAAAAAUAAAADAP//AAAAAAUAAAAEAP//AAAAAAUAAAAFAP//AAAAAAUAAAAGAP//AAAAAAUAAAAIAP//AAAAAAUAAAAJAP//AAAAAAUAAAAKAP//AAAAAAUAAAALAP//AAAAAAUAAAAMAP//AAAAAAUAAAANAP//AAAAAAUAAAAOAP//AAAAAAUAAAAPAP//AAAAAAUAAAAHAP//AAAAAAUAAAAQAAAAAAAAAAUAAAAQAAEAAAAAAAUAAAAQAAIAAAAAAAUAAAAQAAMAAAAAAAUAAAAQAAQAAAAAAAUAAAAQAAUAAAAAAAUAAAAQAAYAAAAAAAUAAAAQAAcAAAAAAAUAAAAQAAgAAAAHAAAAAAACAAcAAAACAAYAAAAJAAIAAAADAAYAAAAIAAIAAAACAAYAAAAHAAIAAAAFAAIAAAAGAAIAAAAEAAIAAAAAAAcAAAACAAYAAAAAAAgAAAAAAAQAAAABAAgAAAABAAQAAAABAAcAAAADAAYAAAACAAgAAAAAAAQAAAADAAgAAAABAAQAAAAEAAgAAAAAAAQAAAADAAcAAAADAAYAAAAEAAcAAAACAAYAAAAFAAcAAAADAAYAAAAFAAgAAAABAAQAAAAGAAgAAAAAAAYAAAAGAAcAAAACAAYAAAANAAgAAAAHAAIAAAANAAcAAAAHAAAAAAAOAAcAAAAGAAAAAAAPAAcAAAAHAAAAAAAPAAgAAAAHAAAAAAAOAAgAAAAGAAAAAAANAAUAAAAFAAIAAAANAAYAAAAFAAMAAAAOAAYAAAAEAAMAAAAOAAUAAAAEAAIAAAAPAAUAAAAFAAIAAAAPAAYAAAAFAAMAAAAHAAcAAAADAAYAAAAHAAgAAAABAAYAAAAMAAUAAAAEAAIAAAAMAAYAAAAEAAMAAAAMAAcAAAAGAAAAAAAMAAgAAAAGAAIAAAD//wkAAAAAAAQAAAAQAAkAAAAAAAQAAAAJAAUAAAAEAAIAAAAIAAgAAAACAAYAAAAJAAgAAAADAAYAAAAKAAgAAAAEAAIAAAALAAgAAAAFAAIAAAAFAAIAAAAFAAIAAAAEAAIAAAAEAAIAAAADAAIAAAAFAAIAAAACAAIAAAAEAAIAAAAHAAUAAAACAAIAAAAIAAUAAAADAAIAAAALAAUAAAADAAIAAAAKAAUAAAAEAAYAAAAKAAYAAAAEAAEAAAAKAAcAAAAEAAAAAAALAAYAAAAFAAEAAAALAAcAAAAFAAAAAAAIAAYAAAAEAAEAAAAIAAcAAAAEAAYAAAAJAAYAAAAFAAEAAAAJAAcAAAAFAAAAAAAGAAYAAAAEAAEAAAAHAAYAAAAFAAEAAAAEAAYAAAAHAAcAAAAFAAYAAAAFAAEAAAACAAYAAAAEAAEAAAADAAYAAAAGAAcAAAAAAAYAAAAEAAEAAAABAAYAAAAFAAEAAAAFAAUAAAAEAAAAAAAGAAUAAAAFAAAAAAADAAUAAAAGAAYAAAAEAAUAAAAHAAYAAAABAAUAAAAEAAAAAAACAAUAAAAFAAAAAAAAAAUAAAAFAAAAAAAAAAMAAAAEAAAAAAAAAAQAAAAEAAEAAAABAAMAAAAFAAAAAAABAAQAAAAFAAEAAAACAAMAAAAAAAIAAAACAAQAAAAAAAMAAAADAAMAAAABAAIAAAADAAQAAAABAAMAAAAEAAMAAAAEAAAAAAAEAAQAAAAEAAEAAAAFAAMAAAAFAAAAAAAFAAQAAAAFAAEAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAEAAAAHAAMAAAABAAAAAAAHAAQAAAABAAEAAAAIAAMAAAAEAAAAAAAIAAQAAAAEAAEAAAAJAAMAAAAFAAAAAAAJAAQAAAAFAAEAAAAKAAMAAAACAAAAAAAKAAQAAAACAAEAAAALAAMAAAADAAAAAAALAAQAAAADAAEAAAAMAAMAAAAEAAAAAAAMAAQAAAAEAAEAAAANAAMAAAAFAAAAAAANAAQAAAAFAAEAAAAOAAMAAAAGAAYAAAAOAAQAAAAGAAcAAAAPAAMAAAAHAAYAAAAPAAQAAAAHAAcAAAAAAAIAAAACAAIAAAABAAIAAAADAAIAAAAKAAIAAAAEAAYAAAALAAIAAAAFAAYAAAAMAAIAAAAEAAAAAAANAAIAAAAFAAAAAAAOAAIAAAAEAAAAAAAPAAIAAAAFAAAAAAAOAAAAAAAEAAAAAAAOAAEAAAAEAAEAAAAPAAAAAAAFAAAAAAAPAAEAAAAFAAEAAAAMAAAAAAAEAAAAAAAMAAEAAAAEAAEAAAANAAAAAAAFAAAAAAANAAEAAAAFAAEAAAAKAAAAAAAEAAAAAAAKAAEAAAAEAAEAAAALAAAAAAAFAAAAAAALAAEAAAAFAAEAAAAIAAAAAAAEAAAAAAAIAAEAAAAEAAEAAAAJAAAAAAAFAAAAAAAJAAEAAAAFAAEAAAAGAAAAAAAEAAAAAAAGAAEAAAAEAAEAAAAHAAAAAAAFAAAAAAAHAAEAAAAFAAEAAAAEAAAAAAAGAAYAAAAEAAEAAAAGAAcAAAAFAAAAAAAHAAYAAAAFAAEAAAAHAAcAAAACAAAAAAAEAAAAAAACAAEAAAAEAAEAAAADAAAAAAAFAAAAAAADAAEAAAAFAAEAAAAAAAAAAAAEAAAAAAAAAAEAAAAEAAEAAAABAAAAAAAFAAAAAAABAAEAAAAFAAEAAAA=")
+tile_set = SubResource("TileSet_rllje")
+
+[node name="Player" parent="." unique_id=849064682 instance=ExtResource("3_rllje")]
+position = Vector2(896, 320)
+
+[node name="enemies" type="Node2D" parent="." unique_id=1163315495]
+
+[node name="enemy 2" parent="enemies" unique_id=500267632 instance=ExtResource("4_qimna")]
+position = Vector2(128, 448)
+direction = -1.0
+
+[node name="enemy 3" parent="enemies" unique_id=1653817498 instance=ExtResource("4_qimna")]
+position = Vector2(448, 448)
+direction = -1.0
+
+[node name="smol bobot guy" parent="enemies" unique_id=1397529804 instance=ExtResource("5_drctm")]
+position = Vector2(640, 320)
+direction = 1.0
+
+[node name="smol bobot guy2" parent="enemies" unique_id=2027714282 instance=ExtResource("5_drctm")]
+position = Vector2(576, 128)
+direction = -1.0
+
+[node name="smol bobot guy3" parent="enemies" unique_id=969019100 instance=ExtResource("5_drctm")]
+position = Vector2(448, 128)
+direction = -1.0
+
+[node name="Health" type="TextureProgressBar" parent="." unique_id=659421190]
+offset_left = 384.0
+offset_right = 640.0
+offset_bottom = 64.0
+max_value = 4.0
+value = 4.0
+fill_mode = 1
+texture_under = ExtResource("6_7dsla")
+texture_progress = ExtResource("7_qm4g5")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=730957499]
+collision_layer = 10
+collision_mask = 10
+script = ExtResource("8_vieoq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2113545436]
+position = Vector2(512, 768)
+shape = SubResource("RectangleShape2D_qcd3b")
+
+[node name="Fight Music" type="AudioStreamPlayer2D" parent="." unique_id=806477701]
+process_mode = 1
+stream = ExtResource("9_xejdk")
+volume_db = 10.0
+bus = &"Music"
+
+[node name="Fight Win" type="AudioStreamPlayer2D" parent="." unique_id=1126053369]
+process_mode = 1
+stream = ExtResource("11_634q4")
+volume_db = 10.0
+bus = &"Music"
+
+[node name="Pause Menu" parent="." unique_id=372689476 instance=ExtResource("11_xejdk")]
+offset_left = 512.0
+offset_top = 288.0
+offset_right = 512.0
+offset_bottom = 288.0
+
+[connection signal="start_pls" from="Player" to="." method="on_start"]
+[connection signal="oh_no_i_died_bleh" from="enemies/enemy 2" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/enemy 3" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/smol bobot guy" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/smol bobot guy2" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/smol bobot guy3" to="." method="oh_no_i_died_bleh"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="finished" from="Fight Win" to="." method="_on_fight_win_finished"]

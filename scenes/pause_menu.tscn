@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://peql2t47etg6"]
+
+[ext_resource type="Script" uid="uid://5mtjgq3jixlr" path="res://scripts/pause_menu.gd" id="1_n87rw"]
+
+[node name="Pause Menu" type="Control" unique_id=372689476]
+process_mode = 3
+visible = false
+z_index = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n87rw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=706969345]
+custom_minimum_size = Vector2(1024, 576)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1101211889]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="resume" type="Button" parent="VBoxContainer" unique_id=1372809705]
+layout_mode = 2
+text = "Resume"
+
+[node name="quit" type="Button" parent="VBoxContainer" unique_id=1322086158]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="button_up" from="VBoxContainer/resume" to="." method="_on_resume_button_up"]
+[connection signal="button_up" from="VBoxContainer/quit" to="." method="_on_quit_button_up"]

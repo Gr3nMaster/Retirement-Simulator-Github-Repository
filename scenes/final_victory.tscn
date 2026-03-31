@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://duu5u50hyj66o"]
+
+[ext_resource type="Script" uid="uid://bxu6ds5li0253" path="res://scripts/final_victory.gd" id="1_emc86"]
+[ext_resource type="Texture2D" uid="uid://cvl6d55l77lni" path="res://sprites/table.png" id="1_vlkcb"]
+[ext_resource type="Texture2D" uid="uid://ciwrskpbknjug" path="res://sprites/win polaroid.png" id="2_p7xal"]
+[ext_resource type="Texture2D" uid="uid://b80a78dri2qot" path="res://sprites/that's a wrap.png" id="3_emc86"]
+[ext_resource type="AudioStream" uid="uid://brspjipq0w67b" path="res://sound/Beach Day.mp3" id="5_pu70m"]
+
+[sub_resource type="Animation" id="Animation_p7xal"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_emc86"]
+resource_name = "fade in"
+length = 10.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pu70m"]
+_data = {
+&"RESET": SubResource("Animation_p7xal"),
+&"fade in": SubResource("Animation_emc86")
+}
+
+[node name="Final victory" type="Node2D" unique_id=1599450548]
+script = ExtResource("1_emc86")
+
+[node name="Table" type="Sprite2D" parent="." unique_id=1012178607]
+position = Vector2(512, 288)
+texture = ExtResource("1_vlkcb")
+
+[node name="WinPolaroid" type="Sprite2D" parent="." unique_id=1645578420]
+position = Vector2(512, 256)
+rotation = -0.05235988
+scale = Vector2(0.845, 0.845)
+texture = ExtResource("2_p7xal")
+
+[node name="That\'sAWrap" type="Sprite2D" parent="WinPolaroid" unique_id=828234927]
+position = Vector2(0, -32)
+texture = ExtResource("3_emc86")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1465621031]
+libraries/ = SubResource("AnimationLibrary_pu70m")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=229157136]
+offset_right = 1024.0
+offset_bottom = 640.0
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="." unique_id=252046669]
+stream = ExtResource("5_pu70m")
+volume_db = 10.0
+autoplay = true
+bus = &"Music"

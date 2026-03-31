@@ -1,0 +1,159 @@
+[gd_scene format=4 uid="uid://rsmsmqsvtcoa"]
+
+[ext_resource type="Script" uid="uid://crjau3i5ovwj3" path="res://scripts/level.gd" id="1_6h8da"]
+[ext_resource type="Texture2D" uid="uid://cq6onjpt0l7s7" path="res://sprites/mountain background.png" id="2_6h8da"]
+[ext_resource type="Texture2D" uid="uid://cvm564fqpjv1k" path="res://sprites/mountain tileset.png" id="2_grobc"]
+[ext_resource type="PackedScene" uid="uid://bpv7efe2mbeaa" path="res://scenes/player.tscn" id="3_3oopl"]
+[ext_resource type="PackedScene" uid="uid://cqmu5wtcvql5x" path="res://scenes/ufo_guffo.tscn" id="5_6h8da"]
+[ext_resource type="PackedScene" uid="uid://dr1vr3bupm46j" path="res://scenes/smol_bobot_guy.tscn" id="5_rjda3"]
+[ext_resource type="Texture2D" uid="uid://begf0sg14abol" path="res://sprites/dead hearts.png" id="6_ekqis"]
+[ext_resource type="Texture2D" uid="uid://bky7s48mg6a6t" path="res://sprites/healthy hearts.png" id="7_78342"]
+[ext_resource type="PackedScene" uid="uid://peql2t47etg6" path="res://scenes/pause_menu.tscn" id="8_3oopl"]
+[ext_resource type="Script" uid="uid://can31xqccjvnt" path="res://scripts/killzone.gd" id="8_m65jk"]
+[ext_resource type="AudioStream" uid="uid://cdk7mw7ahybqc" path="res://sound/Immobile Yodels.mp3" id="10_6h8da"]
+[ext_resource type="AudioStream" uid="uid://cdl6t6lj2ix5m" path="res://sound/Fight Win.mp3" id="11_4fryo"]
+[ext_resource type="PackedScene" uid="uid://cc28bw23ym8m8" path="res://scenes/enemy_1.tscn" id="12_1b303"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6h8da"]
+texture = ExtResource("2_grobc")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_k3tfv"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_6h8da")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcd3b"]
+size = Vector2(1024, 256)
+
+[node name="level 3" type="Node2D" unique_id=1055461785]
+process_mode = 3
+script = ExtResource("1_6h8da")
+next_scene = "res://scenes/main_menu.tscn"
+winnings = 400000
+
+[node name="MountainBackground" type="Sprite2D" parent="." unique_id=1351857983]
+position = Vector2(512, 288)
+texture = ExtResource("2_6h8da")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1906790992]
+tile_map_data = PackedByteArray("AAD//wkAAQADAAMAAAD//wgAAQADAAMAAAD//wcAAQADAAMAAAD//wYAAQADAAMAAAD//wUAAQADAAMAAAD//wQAAQADAAMAAAD//wMAAQADAAMAAAD//wIAAQADAAMAAAD//wEAAQADAAMAAAD//wAAAQADAAMAAAAQAAAAAQADAAMAAAAQAAEAAQADAAMAAAAQAAIAAQADAAMAAAAQAAMAAQADAAMAAAAQAAQAAQADAAMAAAAQAAUAAQADAAMAAAAQAAYAAQADAAMAAAAQAAcAAQADAAMAAAAQAAgAAQADAAMAAAAQAAkAAQADAAMAAAACAAYAAQAAAAIAAAACAAcAAQAAAAMAAAADAAYAAQADAAIAAAADAAcAAQADAAMAAAAMAAYAAQACAAIAAAAMAAcAAQACAAMAAAANAAYAAQAFAAIAAAANAAcAAQAFAAMAAAACAAQAAQAAAAAAAAACAAUAAQAAAAEAAAADAAQAAQAFAAAAAAADAAUAAQAFAAEAAAAEAAYAAQACAAAAAAAEAAcAAQACAAEAAAAFAAYAAQADAAAAAAAFAAcAAQADAAEAAAAGAAYAAQACAAAAAAAGAAcAAQACAAEAAAAHAAYAAQADAAAAAAAHAAcAAQADAAEAAAAIAAYAAQACAAAAAAAIAAcAAQACAAEAAAAJAAYAAQADAAAAAAAJAAcAAQADAAEAAAAKAAYAAQACAAAAAAAKAAcAAQACAAEAAAALAAYAAQADAAAAAAALAAcAAQADAAEAAAAMAAQAAQAAAAAAAAAMAAUAAQAAAAEAAAANAAQAAQAFAAAAAAANAAUAAQAFAAEAAAACAAgAAQAAAAIAAAACAAkAAQAAAAMAAAADAAgAAQABAAIAAAADAAkAAQABAAMAAAAEAAgAAQACAAIAAAAEAAkAAQACAAMAAAAFAAgAAQADAAIAAAAFAAkAAQADAAMAAAAKAAgAAQACAAIAAAAKAAkAAQACAAMAAAALAAgAAQADAAIAAAALAAkAAQADAAMAAAAMAAgAAQAEAAIAAAAMAAkAAQAEAAMAAAANAAgAAQAFAAIAAAANAAkAAQAFAAMAAAAGAAgAAQACAAIAAAAGAAkAAQACAAMAAAAHAAgAAQADAAIAAAAHAAkAAQADAAMAAAAIAAgAAQACAAIAAAAIAAkAAQACAAMAAAAJAAgAAQADAAIAAAAJAAkAAQADAAMAAAAQAP7/AQADAAIAAAAQAP//AQADAAIAAAD///7/AQADAAIAAAD/////AQADAAIAAAD///z/AQADAAIAAAD///3/AQADAAIAAAAQAPz/AQADAAIAAAAQAP3/AQADAAIAAAA=")
+tile_set = SubResource("TileSet_k3tfv")
+
+[node name="Player" parent="." unique_id=849064682 instance=ExtResource("3_3oopl")]
+position = Vector2(832, 256)
+
+[node name="enemies" type="Node2D" parent="." unique_id=1163315495]
+
+[node name="smol bobot guy" parent="enemies" unique_id=1397529804 instance=ExtResource("5_rjda3")]
+position = Vector2(384, 384)
+direction = -1.0
+
+[node name="smol bobot guy2" parent="enemies" unique_id=193033113 instance=ExtResource("5_rjda3")]
+position = Vector2(640, 384)
+direction = 1.0
+
+[node name="ufo guffo" parent="enemies" unique_id=2124323065 instance=ExtResource("5_6h8da")]
+position = Vector2(448, 384)
+direction = 1.0
+
+[node name="ufo guffo2" parent="enemies" unique_id=1154972579 instance=ExtResource("5_6h8da")]
+position = Vector2(576, 384)
+direction = -1.0
+
+[node name="enemy 1" parent="enemies" unique_id=77811059 instance=ExtResource("12_1b303")]
+position = Vector2(192, 256)
+
+[node name="Health" type="TextureProgressBar" parent="." unique_id=659421190]
+offset_left = 384.0
+offset_right = 640.0
+offset_bottom = 64.0
+max_value = 4.0
+value = 4.0
+fill_mode = 1
+texture_under = ExtResource("6_ekqis")
+texture_progress = ExtResource("7_78342")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=730957499]
+collision_layer = 10
+collision_mask = 26
+script = ExtResource("8_m65jk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2113545436]
+position = Vector2(512, 768)
+shape = SubResource("RectangleShape2D_qcd3b")
+
+[node name="Fight Music" type="AudioStreamPlayer2D" parent="." unique_id=806477701]
+process_mode = 1
+stream = ExtResource("10_6h8da")
+volume_db = 10.0
+bus = &"Music"
+
+[node name="Fight Win" type="AudioStreamPlayer2D" parent="." unique_id=1009541863]
+process_mode = 1
+stream = ExtResource("11_4fryo")
+volume_db = 10.0
+bus = &"Music"
+
+[node name="Pause Menu" parent="." unique_id=372689476 instance=ExtResource("8_3oopl")]
+offset_left = 512.0
+offset_top = 288.0
+offset_right = 512.0
+offset_bottom = 288.0
+
+[connection signal="start_pls" from="Player" to="." method="on_start"]
+[connection signal="oh_no_i_died_bleh" from="enemies/smol bobot guy" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/smol bobot guy2" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/ufo guffo" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/ufo guffo2" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/enemy 1" to="." method="oh_no_i_died_bleh"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="finished" from="Fight Win" to="." method="_on_fight_win_finished"]

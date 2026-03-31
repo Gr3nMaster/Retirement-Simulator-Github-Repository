@@ -1,0 +1,115 @@
+[gd_scene format=4 uid="uid://c3fqwvpjw61b4"]
+
+[ext_resource type="Script" uid="uid://crjau3i5ovwj3" path="res://scripts/level.gd" id="1_ahygq"]
+[ext_resource type="Texture2D" uid="uid://breh5fthjityd" path="res://sprites/training tileset.png" id="2_g5osb"]
+[ext_resource type="PackedScene" uid="uid://bpv7efe2mbeaa" path="res://scenes/player.tscn" id="3_g6ibs"]
+[ext_resource type="PackedScene" uid="uid://cc28bw23ym8m8" path="res://scenes/enemy_1.tscn" id="4_2tksr"]
+[ext_resource type="Texture2D" uid="uid://begf0sg14abol" path="res://sprites/dead hearts.png" id="5_4103k"]
+[ext_resource type="Texture2D" uid="uid://bky7s48mg6a6t" path="res://sprites/healthy hearts.png" id="6_3h1mc"]
+[ext_resource type="Script" uid="uid://can31xqccjvnt" path="res://scripts/killzone.gd" id="7_n7rxy"]
+[ext_resource type="AudioStream" uid="uid://4gxvk2r4ao1" path="res://sound/Educational Tension.mp3" id="8_b3p8f"]
+[ext_resource type="AudioStream" uid="uid://cdl6t6lj2ix5m" path="res://sound/Fight Win.mp3" id="10_2tksr"]
+[ext_resource type="PackedScene" uid="uid://peql2t47etg6" path="res://scenes/pause_menu.tscn" id="10_g5osb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x4b8f"]
+texture = ExtResource("2_g5osb")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+3:2/0 = 0
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_paw1w"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_x4b8f")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gu4el"]
+size = Vector2(1024, 256)
+
+[node name="test level" type="Node2D" unique_id=1055461785]
+process_mode = 3
+script = ExtResource("1_ahygq")
+next_scene = "res://scenes/main_menu.tscn"
+winnings = 1000
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=948127066]
+tile_map_data = PackedByteArray("AAAAAAQAAAADAAMAAAABAAQAAAADAAMAAAAEAAQAAAABAAMAAAAFAAQAAAACAAMAAAAGAAQAAAADAAMAAAAHAAQAAAADAAMAAAD//wAAAAAAAAMAAAD//wEAAAAAAAMAAAD//wIAAAAAAAMAAAD//wMAAAAAAAMAAAAIAAAAAAAAAAMAAAAIAAEAAAAAAAMAAAAIAAIAAAAAAAMAAAAIAAMAAAAAAAMAAAAFAAIAAAACAAEAAAAEAAIAAAABAAEAAAAIAP//AAACAAMAAAD/////AAACAAMAAAD///7/AAACAAMAAAAIAP7/AAACAAMAAAAIAP3/AAACAAMAAAD///3/AAACAAMAAAADAAQAAAABAAMAAAACAAMAAAAAAAIAAAAFAAMAAAACAAIAAAAEAAMAAAABAAIAAAADAAMAAAABAAIAAAACAAQAAAAAAAMAAAACAAIAAAAAAAEAAAADAAIAAAABAAEAAAAHAAIAAAADAAEAAAAGAAIAAAADAAEAAAAGAAEAAAADAAEAAAAHAAEAAAADAAEAAAAFAAEAAAADAAEAAAAEAAEAAAADAAEAAAADAAEAAAADAAAAAAACAAEAAAADAAEAAAABAAEAAAADAAEAAAAAAAEAAAADAAEAAAAAAAIAAAADAAEAAAABAAIAAAADAAEAAAAHAAMAAAADAAMAAAAGAAMAAAADAAMAAAAHAAAAAAADAAMAAAAGAAAAAAADAAMAAAAFAAAAAAADAAMAAAAEAAAAAAADAAMAAAADAAAAAAADAAMAAAACAAAAAAADAAMAAAABAAAAAAADAAMAAAAAAAAAAAADAAMAAAAAAAMAAAADAAMAAAABAAMAAAADAAMAAAA=")
+tile_set = SubResource("TileSet_paw1w")
+
+[node name="Player" parent="." unique_id=849064682 instance=ExtResource("3_g6ibs")]
+position = Vector2(512, 384)
+
+[node name="enemies" type="Node2D" parent="." unique_id=1163315495]
+
+[node name="enemy 1" parent="enemies" unique_id=77811059 instance=ExtResource("4_2tksr")]
+position = Vector2(256, 384)
+
+[node name="enemy 2" parent="enemies" unique_id=1997709428 instance=ExtResource("4_2tksr")]
+position = Vector2(704, 384)
+direction = -1.0
+
+[node name="enemy 3" parent="enemies" unique_id=883515411 instance=ExtResource("4_2tksr")]
+position = Vector2(384, 384)
+
+[node name="Health" type="TextureProgressBar" parent="." unique_id=659421190]
+offset_left = 384.0
+offset_right = 640.0
+offset_bottom = 64.0
+max_value = 4.0
+value = 4.0
+fill_mode = 1
+texture_under = ExtResource("5_4103k")
+texture_progress = ExtResource("6_3h1mc")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=995039747]
+collision_layer = 10
+collision_mask = 10
+script = ExtResource("7_n7rxy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=101161603]
+position = Vector2(512, 768)
+shape = SubResource("RectangleShape2D_gu4el")
+
+[node name="Fight Music" type="AudioStreamPlayer2D" parent="." unique_id=1968637145]
+process_mode = 1
+stream = ExtResource("8_b3p8f")
+volume_db = 10.0
+bus = &"Music"
+
+[node name="Fight Win" type="AudioStreamPlayer2D" parent="." unique_id=384288299]
+process_mode = 1
+stream = ExtResource("10_2tksr")
+volume_db = 10.0
+bus = &"Music"
+
+[node name="Pause Menu" parent="." unique_id=372689476 instance=ExtResource("10_g5osb")]
+offset_left = 512.0
+offset_top = 288.0
+offset_right = 512.0
+offset_bottom = 288.0
+
+[connection signal="start_pls" from="Player" to="." method="on_start"]
+[connection signal="oh_no_i_died_bleh" from="enemies/enemy 1" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/enemy 2" to="." method="oh_no_i_died_bleh"]
+[connection signal="oh_no_i_died_bleh" from="enemies/enemy 3" to="." method="oh_no_i_died_bleh"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="finished" from="Fight Win" to="." method="_on_fight_win_finished"]

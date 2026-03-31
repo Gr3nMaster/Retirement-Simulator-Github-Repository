@@ -1,0 +1,221 @@
+[gd_scene format=3 uid="uid://ddq77oj7jxvx6"]
+
+[ext_resource type="Script" uid="uid://civ8niwfgvi" path="res://scripts/win_screen.gd" id="1_erk2x"]
+[ext_resource type="Texture2D" uid="uid://p5ub2qmagba5" path="res://sprites/Weevil WIN.png" id="1_wv5lq"]
+[ext_resource type="Texture2D" uid="uid://c0jpc8xtjusf0" path="res://sprites/i have four whole dolla.png" id="2_2l6cc"]
+[ext_resource type="AudioStream" uid="uid://hu6uqcehxf67" path="res://sound/Cash Money.mp3" id="4_e41g7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2l6cc"]
+atlas = ExtResource("2_2l6cc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2l6cc"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(512, -128, 0)
+emission_shape_scale = Vector3(381, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 2, 0)
+initial_velocity_min = 200.47
+initial_velocity_max = 200.47
+gravity = Vector3(0, 98, 0)
+scale_min = 5.0
+scale_max = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e41g7"]
+atlas = ExtResource("2_2l6cc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lrm4"]
+atlas = ExtResource("2_2l6cc")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s1kg"]
+atlas = ExtResource("2_2l6cc")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="Animation" id="Animation_2l6cc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeevilWin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320, 320)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Winnings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(576, 128)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Clickable:theme_override_colors/font_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e41g7"]
+resource_name = "loop?"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clickable:theme_override_colors/font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1.5, 0.5, 1.5),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_erk2x"]
+resource_name = "start"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeevilWin:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-256, 320), Vector2(320, 320)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Winnings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.1, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(576, -360), Vector2(576, 128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2l6cc"]
+_data = {
+&"RESET": SubResource("Animation_2l6cc"),
+&"loop?": SubResource("Animation_e41g7"),
+&"start": SubResource("Animation_erk2x")
+}
+
+[node name="Win screen" type="Node2D" unique_id=80081042]
+script = ExtResource("1_erk2x")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1899455591]
+offset_right = 1024.0
+offset_bottom = 576.0
+color = Color(0.15095037, 0.3502637, 0, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1087511480]
+amount = 48
+texture = SubResource("AtlasTexture_2l6cc")
+lifetime = 2.86
+preprocess = 2.0
+randomness = 0.5
+visibility_rect = Rect2(0, -256, 1024, 256)
+process_material = SubResource("ParticleProcessMaterial_2l6cc")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=737760724]
+amount = 48
+texture = SubResource("AtlasTexture_e41g7")
+lifetime = 2.86
+preprocess = 2.0
+randomness = 0.5
+visibility_rect = Rect2(0, -256, 1024, 256)
+process_material = SubResource("ParticleProcessMaterial_2l6cc")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="." unique_id=1849566644]
+amount = 48
+texture = SubResource("AtlasTexture_0lrm4")
+lifetime = 2.86
+preprocess = 2.0
+randomness = 0.5
+visibility_rect = Rect2(0, -256, 1024, 256)
+process_material = SubResource("ParticleProcessMaterial_2l6cc")
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="." unique_id=398829537]
+amount = 48
+texture = SubResource("AtlasTexture_6s1kg")
+lifetime = 2.86
+preprocess = 2.0
+randomness = 0.5
+visibility_rect = Rect2(0, -256, 1024, 256)
+process_material = SubResource("ParticleProcessMaterial_2l6cc")
+
+[node name="Winnings" type="Label" parent="." unique_id=1201516478]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 576.0
+offset_top = 128.0
+offset_right = 823.0
+offset_bottom = 256.00003
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "You Won: $10!"
+horizontal_alignment = 1
+
+[node name="Clickable" type="Label" parent="." unique_id=2134147047]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 576.0
+offset_top = 192.0
+offset_right = 832.0
+offset_bottom = 320.00003
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0)
+theme_override_font_sizes/font_size = 32
+text = "Click to progress"
+horizontal_alignment = 1
+
+[node name="WeevilWin" type="Sprite2D" parent="." unique_id=1001375936]
+position = Vector2(320, 320)
+texture = ExtResource("1_wv5lq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1775506883]
+libraries/ = SubResource("AnimationLibrary_2l6cc")
+autoplay = &"start"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=939963202]
+stream = ExtResource("4_e41g7")
+volume_db = 10.0
+autoplay = true
+panning_strength = 0.0
+bus = &"Music"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
