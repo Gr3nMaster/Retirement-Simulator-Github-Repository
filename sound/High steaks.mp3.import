@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://6f0p0d31eksl"
+path="res://.godot/imported/High steaks.mp3-28cad81391365fc26be7a892fb40620b.mp3str"
+
+[deps]
+
+source_file="res://sound/High steaks.mp3"
+dest_files=["res://.godot/imported/High steaks.mp3-28cad81391365fc26be7a892fb40620b.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

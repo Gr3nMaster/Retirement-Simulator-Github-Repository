@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://4gxvk2r4ao1"
+path="res://.godot/imported/Educational Tension.mp3-2918aab233386af68a30763f73a61800.mp3str"
+
+[deps]
+
+source_file="res://sound/Educational Tension.mp3"
+dest_files=["res://.godot/imported/Educational Tension.mp3-2918aab233386af68a30763f73a61800.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

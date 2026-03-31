@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cdl6t6lj2ix5m"
+path="res://.godot/imported/Fight Win.mp3-1f6f0aa869e86ca002c17eff525f80a4.mp3str"
+
+[deps]
+
+source_file="res://sound/Fight Win.mp3"
+dest_files=["res://.godot/imported/Fight Win.mp3-1f6f0aa869e86ca002c17eff525f80a4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
